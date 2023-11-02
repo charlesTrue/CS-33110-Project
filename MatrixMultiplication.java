@@ -2,22 +2,26 @@ import java.util.Random;
 
 public class MatrixMultiplication {
     public static void main(String[] args) {
-        int[][] ma = generateRandomMatrix(1, 50, 1);
-        int[][] mb = generateRandomMatrix(1, 50, 1);
+        int[][] ma = generateRandomMatrix(1, 50, 1024);
+        int[][] mb = generateRandomMatrix(1, 50, 1024);
 
         int[][] mcc = classicMultiplication(ma, mb);
         int[][] mcd = divideAndConquerMultiplication(ma, mb);
         int[][] mcs = strassenMultiplication(ma, mb);
 
         // Print matrices
-        printMatrix("MA = ", ma);
-        printMatrix("MB = ", mb);
-        printMatrix("MCC = ", mcc);
-        printMatrix("MCD = ", mcd);
-        printMatrix("MCS = ", mcs);
+        printMatrix("Original Matrix A (MA)  ", ma);
+        printMatrix("Original Matrix B (MB  ", mb);
+        // Print the result matrices after multiplication
+        printMatrix("Matrix C (MCC) - Classic Multiplication Result ", mcc);
+        printMatrix("Matrix D (MCD) - Divide and Conquer Multiplication Result ", mcd);
+        printMatrix("Matrix S (MCS) - Strassen's Multiplication Result ", mcs);
+        // Call the recordAndPrintRuntimes method to record and print runtimes
+        recordAndPrintRuntimes(ma, mb);
+
     }
 
-    // VECTOR OPERATIONS
+    // VECTOR OPERATIONS--------------------------------------------------------
     public static int vectorMultiplication(int[] vectorA, int[] vectorB) {
         int product = 0;
         for (int i = 0; i < vectorA.length; i++) {
@@ -42,7 +46,7 @@ public class MatrixMultiplication {
         return negVector;
     }
 
-    // MATRIX OPERATIONS
+    // MATRIX OPERATIONS--------------------------------------------------------
     public static int[][] matrixAddition(int[][] matrixA, int[][] matrixB) {
         int[][] matrixC = new int[matrixA.length][matrixA[0].length];
         for (int i = 0; i < matrixA.length; i++) {
@@ -63,7 +67,7 @@ public class MatrixMultiplication {
         return negMatrix;
     }
 
-    // MATRIX HELPERS
+    // MATRIX HELPERS--------------------------------------------------------------
     public static int getWidth(int[][] matrix) {
         if (matrix.length == 0) {
             return 0;
@@ -149,8 +153,33 @@ public class MatrixMultiplication {
             System.out.println();
         }
     }
+    // Record and print the runtime for matrices -----------------------------------------------
+    public static void recordAndPrintRuntimes(int[][] matrixA, int[][] matrixB) {
+        long startTime, endTime;
 
-    // MATRIX MULTIPLIERS
+        // Record and print the runtime for classic multiplication
+        startTime = System.nanoTime();
+        int[][] mcc = classicMultiplication(matrixA, matrixB);
+        endTime = System.nanoTime();
+        long classicRuntime = endTime - startTime;
+        System.out.println("Classic Multiplication Runtime: " + classicRuntime + " nanoseconds");
+
+        // Record and print the runtime for divide and conquer multiplication
+        startTime = System.nanoTime();
+        int[][] mcd = divideAndConquerMultiplication(matrixA, matrixB);
+        endTime = System.nanoTime();
+        long divideAndConquerRuntime = endTime - startTime;
+        System.out.println("Divide and Conquer Multiplication Runtime: " + divideAndConquerRuntime + " nanoseconds");
+
+        // Record and print the runtime for Strassen's multiplication
+        startTime = System.nanoTime();
+        int[][] mcs = strassenMultiplication(matrixA, matrixB);
+        endTime = System.nanoTime();
+        long strassenRuntime = endTime - startTime;
+        System.out.println("Strassen's Multiplication Runtime: " + strassenRuntime + " nanoseconds");
+    }
+
+    // MATRIX MULTIPLIERS-------------------------------------------------------------------
     public static int[][] classicMultiplication(int[][] matrixA, int[][] matrixB) {
         int matrixBWidth = matrixB[0].length;
         int[][] matrixC = initializeMatrix(matrixA.length, matrixBWidth);
@@ -279,4 +308,7 @@ public class MatrixMultiplication {
 
         return combineMatrix(c11, c12, c21, c22);
     }
+
+
 }
+

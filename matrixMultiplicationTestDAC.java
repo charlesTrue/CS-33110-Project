@@ -2,32 +2,32 @@ import org.testng.annotations.Test;
 
 import static org.junit.Assert.assertArrayEquals;
 
-public class MatrixMultiplicationTest {
+public class matrixMultiplicationTestDAC {
 
     @Test
     public void testCase1() {
-        int[][] matrixA = {{2}};
-        int[][] matrixB = {{2}};
-        int[][] expected = {{4}};
-        int[][] result = MatrixMultiplication.classicMultiplication(matrixA, matrixB);
+        int[][] matrixA = {{1}};
+        int[][] matrixB = {{1}};
+        int[][] expected = {{1}};
+        int[][] result = MatrixMultiplication.divideAndConquerMultiplication(matrixA, matrixB);
         assertArrayEquals(expected, result);
     }
 
     @Test
     public void testCase2() {
         int[][] matrixA = {{5}};
-        int[][] matrixB = {{5}};
-        int[][] expected = {{25}};
-        int[][] result = MatrixMultiplication.classicMultiplication(matrixA, matrixB);
+        int[][] matrixB = {{9}};
+        int[][] expected = {{45}};
+        int[][] result = MatrixMultiplication.divideAndConquerMultiplication(matrixA, matrixB);
         assertArrayEquals(expected, result);
     }
 
     @Test
     public void testCase3() {
-        int[][] matrixA = {{-3}};
+        int[][] matrixA = {{-2}};
         int[][] matrixB = {{3}};
-        int[][] expected = {{-9}};
-        int[][] result = MatrixMultiplication.classicMultiplication(matrixA, matrixB);
+        int[][] expected = {{-6}};
+        int[][] result = MatrixMultiplication.divideAndConquerMultiplication(matrixA, matrixB);
         assertArrayEquals(expected, result);
     }
 
@@ -45,7 +45,7 @@ public class MatrixMultiplicationTest {
                 {19, 22},
                 {43, 50}
         };
-        int[][] result = MatrixMultiplication.classicMultiplication(matrixA, matrixB);
+        int[][] result = MatrixMultiplication.divideAndConquerMultiplication(matrixA, matrixB);
         assertArrayEquals(expected, result);
     }
 
@@ -63,7 +63,7 @@ public class MatrixMultiplicationTest {
                 {19_602, 19_602},
                 {19_602, 19_602}
         };
-        int[][] result = MatrixMultiplication.classicMultiplication(matrixA, matrixB);
+        int[][] result = MatrixMultiplication.divideAndConquerMultiplication(matrixA, matrixB);
         assertArrayEquals(expected, result);
     }
 
@@ -87,7 +87,7 @@ public class MatrixMultiplicationTest {
                 {15, 16, 31, 10},
                 {10, 30, 24, 24}
         };
-        int[][] result = MatrixMultiplication.classicMultiplication(matrixA, matrixB);
+        int[][] result = MatrixMultiplication.divideAndConquerMultiplication(matrixA, matrixB);
         assertArrayEquals(expected, result);
     }
 
@@ -111,7 +111,7 @@ public class MatrixMultiplicationTest {
                 {12_454, 39_972, -5_575, 15_732},
                 {-805, -8_370, 1_219, 32_885}
         };
-        int[][] result = MatrixMultiplication.classicMultiplication(matrixA, matrixB);
+        int[][] result = MatrixMultiplication.divideAndConquerMultiplication(matrixA, matrixB);
         assertArrayEquals(expected, result);
     }
 
@@ -147,7 +147,7 @@ public class MatrixMultiplicationTest {
                 {0, 0, 0, 0, 0, 0, 1, 0},
                 {0, 0, 0, 0, 0, 0, 0, 1}
         };
-        int[][] result = MatrixMultiplication.classicMultiplication(matrixA, matrixB);
+        int[][] result = MatrixMultiplication.divideAndConquerMultiplication(matrixA, matrixB);
         assertArrayEquals(expected, result);
     }
 
@@ -183,7 +183,7 @@ public class MatrixMultiplicationTest {
                 {2_649, 26, -88, 26, 2_649, 26, -88, 26},
                 {1_659, -5, 0, 0, 1_659, -5, 0, 0}
         };
-        int[][] result = MatrixMultiplication.classicMultiplication(matrixA, matrixB);
+        int[][] result = MatrixMultiplication.divideAndConquerMultiplication(matrixA, matrixB);
         assertArrayEquals(expected, result);
     }
 
@@ -201,7 +201,7 @@ public class MatrixMultiplicationTest {
                 {23, 34},
                 {31, 46}
         };
-        int[][] result = MatrixMultiplication.classicMultiplication(matrixA, matrixB);
+        int[][] result = MatrixMultiplication.divideAndConquerMultiplication(matrixA, matrixB);
         assertArrayEquals(expected, result);
     }
 }
